@@ -1,103 +1,40 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-
-
-
 public class Main {
     public static void main(String[] args) {
+        BST<Integer> tree = new BST<>();
 
-        System.out.println("Unsorted Array -----------------------------------------");
-        ArrayList<Integer> integerList = Lab4.getList();
-        Lab4.outputList(integerList);
+        tree.insert(13);
+        tree.insert(22);
+        tree.insert(36);
+        tree.insert(5);
+        tree.insert(48);
+        tree.insert(17);
+        tree.insert(39);
+        tree.insert(2);
+        tree.insert(26);
+        tree.insert(40);
+        tree.insert(29);
+        tree.insert(34);
+        tree.insert(10);
 
-        // Make copies so each algorithm sorts the same original data
-        ArrayList<Integer> bubbleCopy = new ArrayList<>(integerList);
-        ArrayList<Integer> insertionCopy = new ArrayList<>(integerList);
+        // delete the element 17 from BST
+        System.out.println(tree.delete(17)); // should return true
 
-        // Time bubble sort
-        long startBubble = System.nanoTime();
-        ArrayList<Integer> bubbleSortedList = Lab4.bubbleSort(bubbleCopy);
-        long endBubble = System.nanoTime();
-        long bubbleTime = endBubble - startBubble;
+        System.out.println("Inorder Traversal:");// should print the elements in sorted order
+        tree.inorder();
+        System.out.println("\nPostorder traversal:");
+        tree.postorder(); // should print the elements in postorder
+        System.out.println("\nPreorder traversal:");
+        tree.preorder(); // should print the elements in preorder
 
-        System.out.println("\n\nBubble sort results --------------------------------");
-        Lab4.outputList(bubbleSortedList);
-        System.out.println("\nBubble Sort Time: " + bubbleTime + " ns");
+        //Search for the element 36 and 37
+        System.out.println("\nSearch for 36: " + tree.search(36)); // should return true
+        System.out.println("Search for 37: " + tree.search(37)); // should return false
 
-        // Time insertion sort
-        long startInsertion = System.nanoTime();
-        ArrayList<Integer> insertionSortedList = Lab4.insertionSort(insertionCopy);
-        long endInsertion = System.nanoTime();
-        long insertionTime = endInsertion - startInsertion;
-
-        System.out.println("\n\nInsertion sort results --------------------------------");
-        Lab4.outputList(insertionSortedList);
-        System.out.println("\nInsertion Sort Time: " + insertionTime + " ns");
-    }
-}
-
-class Lab4 {
-
-    public static ArrayList<Integer> insertionSort(ArrayList<Integer> integerList) {
-        // Implement insertion sort algorithm 
-        for (int i = 1; i < integerList.size(); i++) {
-            int key = integerList.get(i);
-            int j = i - 1;
-
-            while (j >= 0 && integerList.get(j) > key) {
-                integerList.set(j + 1, integerList.get(j));
-                j = j - 1;
-            }
-            integerList.set(j + 1, key);
-        }
-        return integerList;
+        //Using the path() method, display the path from the root to the element 2 and 34
+        System.out.println("Path from root to 2: " + tree.path(2)); // should return [13, 5, 2]
+        System.out.println("Path from root to 34: " + tree.path(34)); // should return [13, 22, 36, 29, 34]
     }
 
-    public static ArrayList<Integer> bubbleSort(ArrayList<Integer> integerList) {
-        // Implement the bubble sort algorithm 
-        boolean swapped;
-
-        for (int i = 0; i < integerList.size() - 1; i++) {
-            swapped = false;
-
-            for (int j = 0; j < integerList.size() - 1 - i; j++) {
-                if (integerList.get(j) > integerList.get(j + 1)) {
-                    int temp = integerList.get(j);
-                    integerList.set(j, integerList.get(j + 1));
-                    integerList.set(j + 1, temp);
-                    swapped = true;
-                }
-            }
-
-            if (!swapped) break;
-        }
-
-        return integerList;
-    }
-
-    public static ArrayList<Integer> getList() {
-        ArrayList<Integer> integerList = new ArrayList<>();
-        String line;
-        try (BufferedReader br = new BufferedReader(new FileReader("integers.txt"))) {
-            while ((line = br.readLine()) != null) {
-                integerList.add(Integer.parseInt(line));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return integerList;
-    }
-
-    public static void outputList(ArrayList<Integer> integerList) {
-        for (int i = 0; i < integerList.size(); i++) {
-            System.out.print(integerList.get(i) + " ");
-        }
-         System.out.println();
-    }
 
 
 }
-
-
