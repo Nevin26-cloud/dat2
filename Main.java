@@ -1,40 +1,42 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class Main {
     public static void main(String[] args) {
-        BST<Integer> tree = new BST<>();
 
-        tree.insert(13);
-        tree.insert(22);
-        tree.insert(36);
-        tree.insert(5);
-        tree.insert(48);
-        tree.insert(17);
-        tree.insert(39);
-        tree.insert(2);
-        tree.insert(26);
-        tree.insert(40);
-        tree.insert(29);
-        tree.insert(34);
-        tree.insert(10);
+        Map<String, Integer> creditHours = new HashMap<>();
 
-        // delete the element 17 from BST
-        System.out.println(tree.delete(17)); // should return true
+        creditHours.put("IT-1025", 3);
+        creditHours.put("IT-1050", 3);
+        creditHours.put("IT-1150", 3);
+        creditHours.put("IT-2310", 3);
+        creditHours.put("IT-2320", 4);
+        creditHours.put("IT-2351", 4);
+        creditHours.put("IT-2650", 4);
+        creditHours.put("IT-2660", 4);
+        creditHours.put("IT-2030", 4);
 
-        System.out.println("Inorder Traversal:");// should print the elements in sorted order
-        tree.inorder();
-        System.out.println("\nPostorder traversal:");
-        tree.postorder(); // should print the elements in postorder
-        System.out.println("\nPreorder traversal:");
-        tree.preorder(); // should print the elements in preorder
+       // Check if the map contains the key "IT-1025" and "IT-2110"
+        System.out.println("Contains IT-1025: " + creditHours.containsKey("IT-1025"));
+        System.out.println("Contains IT-2110: " + creditHours.containsKey("IT-2110"));
 
-        //Search for the element 36 and 37
-        System.out.println("\nSearch for 36: " + tree.search(36)); // should return true
-        System.out.println("Search for 37: " + tree.search(37)); // should return false
+        // Print all of the content (key and value) of the map
+        System.out.println("\nAll content in the map:");
+        for (Map.Entry<String, Integer> entry : creditHours.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
 
-        //Using the path() method, display the path from the root to the element 2 and 34
-        System.out.println("Path from root to 2: " + tree.path(2)); // should return [13, 5, 2]
-        System.out.println("Path from root to 34: " + tree.path(34)); // should return [13, 22, 36, 29, 34]
+
+       // Remove IT-2030 and IT-1150
+        creditHours.remove("IT-2030");
+        creditHours.remove("IT-1150");
+
+      //Print all of the values in the map 
+        System.out.println("\nAll values after removing IT-2030 and IT-1150:");
+        for (Integer value : creditHours.values()) {
+            System.out.println(value);
+
+        
+        }
     }
-
-
-
 }
