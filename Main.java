@@ -4,7 +4,7 @@ public static void main(String[] args) {
 
     // 1 — Add vertices (using names for readability)
     List<String> vertices = Arrays.asList(
-       "Liberal Arts",                 // (vertic 0)
+            "Liberal Arts",                 // (vertic 0)
             "Student Services",             // (vertice 1)
             "Health Careers & Sciences",    // (vertice 2)
             "Health Technologies Center",   // (vertice 3)
@@ -14,33 +14,33 @@ public static void main(String[] args) {
             "Theatre"                       // (vertice 7)
     );
 
-    // 3- Add edges based on the campus map
     
+    // 2 — Add edges 
     List<int[]> edges = new ArrayList<>();
 
     // Liberal Arts connections
-    edges.add(new int[]{0, 1});   // Liberal Arts ↔ Student Services
+    edges.add(new int[]{0, 1});   // Liberal Arts - Student Services
     edges.add(new int[]{0, 2});   
 
     // Student Services connections
-    edges.add(new int[]{1, 2});   // Student Services ↔ Health Careers
-    edges.add(new int[]{1, 7});   // Student Services ↔ Theatre
+    edges.add(new int[]{1, 2});   // Student Services - Health Careers
+    edges.add(new int[]{1, 7});   // Student Services - Theatre
 
     // Health Careers & Sciences connections
-    edges.add(new int[]{2, 3});   // Health Careers & Sciences ↔ Health Technologies Center
-    edges.add(new int[]{2, 5});   // HCS ↔ Tech Learning Center
+    edges.add(new int[]{2, 3});   // Health Careers & Sciences - Health Technologies Center
+    edges.add(new int[]{2, 5});   // HCS - Tech Learning Center
 
     // Health Technologies Center connections
-    edges.add(new int[]{3, 4});   // Health Technologies Center ↔ Recreation Center
+    edges.add(new int[]{3, 4});   // Health Technologies Center - Recreation Center
 
     // Recreation Center connections
-    edges.add(new int[]{4, 5});   // Rec ↔ Tech Learning Center
+    edges.add(new int[]{4, 5});   // Rec - Tech Learning Center
 
     // Technology Learning Center connections
-    edges.add(new int[]{5, 6});   // TLC ↔ Business & Tech
+    edges.add(new int[]{5, 6});   // TLC - Business & Tech
 
     // Business & Technology connections
-    edges.add(new int[]{6, 7});   // B&T ↔ Theatre
+    edges.add(new int[]{6, 7});   // B&T - Theatre
     
 
     
